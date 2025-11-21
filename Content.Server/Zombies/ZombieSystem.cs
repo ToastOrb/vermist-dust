@@ -259,6 +259,14 @@ namespace Content.Server.Zombies
                     args.Handled = true;
                     continue;
                 }
+                else if (!HasComp<WoundableComponent>(uid)) // Offbrand
+                {
+                    if (!HasComp<ZombieImmuneComponent>(uid) && !cannotSpread && _random.Prob(GetZombieInfectionChance(uid, entity.Comp)))
+                    {
+                        EnsureComp<PendingZombieComponent>(uid);
+                        EnsureComp<ZombifyOnDeathComponent>(uid);
+                    }
+                }
 
                 if (_mobState.IsAlive(uid, mobState))
                 {

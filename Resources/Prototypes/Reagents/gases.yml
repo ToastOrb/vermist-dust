@@ -345,6 +345,17 @@
         effectProto: StatusEffectForcedSleeping
         time: 3
         type: Update
+      - !type:ModifyStatusEffect # Offbrand
+        conditions:
+        - !type:ReagentCondition
+          reagent: NitrousOxide
+          min: 1.8
+        - !type:MetabolizerTypeCondition
+          type: [ Slime ]
+          inverted: false
+        effectProto: StatusEffectPainSuppressionNitrousOxide
+        time: 3
+        type: Add
       - !type:HealthChange
         minScale: 7
         conditions:
