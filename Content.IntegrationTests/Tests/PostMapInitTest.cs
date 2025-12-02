@@ -95,6 +95,7 @@ namespace Content.IntegrationTests.Tests
             "/Maps/_Impstation/reach.yml", // Contains handheld crew monitor
             "/Maps/_Impstation/xeno.yml", // Contains PTK-800 "Matter Dematerializer"
             "/Maps/_Impstation/eclipse.yml", // Contains PTK-800 "Matter Dematerializer", LSE-400c "Svalinn machine gun"
+            "/Maps/_VDS/progenitor.yml", // Contains EXP-2100g "Duster" machine board, "EXP-320g "Friendship" machine board, "PTK-800 "Matter Dematerializer" machine board, LSE-1200c "Perforator" machine board, and an anomalite spawn point for good measure. No suffix can contain me. None.
 
 
             // Shuttles
@@ -189,6 +190,7 @@ namespace Content.IntegrationTests.Tests
 
             // VDS PROTOTYPES:
             "CentCommVDS",
+            "Progenitor",
 
             // NOT IN ROTATION BUT WE STILL NEED THEM TESTED SINCE THEY STILL HAVE A PROTOTYPE:
             "Eclipse",
