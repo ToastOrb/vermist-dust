@@ -38,7 +38,6 @@ public sealed partial class GoobChangelingSystem : EntitySystem
     [Dependency] private readonly SharedUserInterfaceSystem _userInterfaceSystem = default!;
     [Dependency] private readonly Content.Shared._Offbrand.Wounds.BrainDamageSystem _brainDamage = default!; // Offbrand
     [Dependency] private readonly Content.Shared._Offbrand.Wounds.HeartSystem _heart = default!; // Offbrand
-    [Dependency] private readonly RejuvenateSystem _rejuvenate = default!;
     [Dependency] private readonly CollectiveMindUpdateSystem _collectiveMind = default!; // imp
 
     public void SubscribeAbilities()
@@ -335,8 +334,11 @@ public sealed partial class GoobChangelingSystem : EntitySystem
         if (!TryComp<DamageableComponent>(uid, out var damageable))
             return;
 
-        // Rejuvenate the ling. we're back baby.
-        _rejuvenate.PerformRejuvenate(uid);
+        // heal of everything
+        _damage.SetAllDamage((uid, damageable), 0);
+        _mobState.ChangeMobState(uid, MobState.Alive);
+        _blood.TryModifyBloodLevel(uid, 1000);
+        _blood.TryModifyBleedAmount(uid, -1000);
 
         _popup.PopupEntity(Loc.GetString("changeling-stasis-exit"), uid, uid);
 
