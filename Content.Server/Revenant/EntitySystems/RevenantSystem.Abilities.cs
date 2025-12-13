@@ -230,6 +230,8 @@ public sealed partial class RevenantSystem
 
         //KILL THEMMMM
 
+        if (!_mobThresholdSystem.TryGetThresholdForState(args.Args.Target.Value, MobState.Dead, out var damage))
+            return;
         _damage.TryChangeDamage(args.Args.Target, component.HarvestDamage, true, origin: uid); // Offbrand - use a fixed amount
 
         args.Handled = true;
