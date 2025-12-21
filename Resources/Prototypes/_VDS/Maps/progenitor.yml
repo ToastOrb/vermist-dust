@@ -2,7 +2,7 @@
   id: Progenitor
   mapName: 'Progenitor'
   mapPath: /Maps/_VDS/progenitor.yml
-  minPlayers: 6
+  minPlayers: 8
   maxPlayers: 50
   stations:
     Progenitor:
@@ -15,8 +15,8 @@
             prefixCreator: '-VDC'
         - type: StationEmergencyShuttle
           emergencyShuttlePath: /Maps/_VDS/Shuttles/emergency_progenitor.yml
-        # - type: StationCargoShuttle
-        #   path:
+        - type: StationCargoShuttle
+          path: /Maps/_VDS/Shuttles/islecamp.yml # progenitor isn't supposed to have a cargo shuttle so they get this :-)
         - type: StationJobs
           availableJobs: # 38-44
             # command - 7
