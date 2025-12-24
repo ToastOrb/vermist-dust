@@ -79,9 +79,6 @@
     price: 40
   # imp edits #
   - type: DamageOtherOnHit
-    damage:
-      types:
-        Piercing: 11
     staminaCost: 8
   - type: EmbeddableProjectile
   - type: EmbedPassiveDamage
@@ -341,9 +338,6 @@
     speedModifier: 1.5
   # imp edits #
   - type: DamageOtherOnHit
-    damage:
-      groups:
-        Brute: 10
     staminaCost: 14
   - type: ThrowingAngle
     angle: 90
