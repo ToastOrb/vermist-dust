@@ -43,6 +43,7 @@ using Content.Shared.NPC.Prototypes;
 using Content.Shared.Roles;
 using Content.Shared._Offbrand.Wounds; // Offbrand
 using Content.Shared.Temperature.Components;
+using Content.Shared._Offbrand.Wounds; // Offbrand
 
 namespace Content.Server.Zombies;
 
@@ -271,7 +272,7 @@ public sealed partial class ZombieSystem
         _bloodstream.SetBloodLossThreshold(target, 0f);
         //Give them zombie blood
         _bloodstream.ChangeBloodReagents(target, zombiecomp.NewBloodReagents);
-        _bloodstream.FlushChemicals(target, null, 100); // Offbrand
+        _bloodstream.FlushChemicals(target, 100); // Offbrand
 
         //This is specifically here to combat insuls, because frying zombies on grilles is funny as shit.
         _inventory.TryUnequip(target, "gloves", true, true);
@@ -295,6 +296,11 @@ public sealed partial class ZombieSystem
         _faction.ClearFactions(target, dirty: false);
         _faction.AddFaction(target, ZombieFaction);
         _faction.AddFaction(target, InitialInfectedFaction); //#IMP: zombies see intial infected as fellow zombies and don't attack
+
+        // Begin Offbrand
+        var rejuv = new Content.Shared.Rejuvenate.RejuvenateEvent();
+        RaiseLocalEvent(target, rejuv);
+        // End Offbrand
 
         // Begin Offbrand
         var rejuv = new Content.Shared.Rejuvenate.RejuvenateEvent();

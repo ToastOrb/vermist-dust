@@ -110,26 +110,30 @@
   suffix: Filled
   parent: MedkitAdvanced
   components:
-  - type: StorageFill
-    contents:
-      - id: MedicatedSuture
-      - id: RegenerativeMesh
-      - id: Tincture #IMP
-      - id: ChemistryBottleTramadol # Offbrand
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: MedicatedSuture
+        - id: RegenerativeMesh
+        - id: Tincture #IMP
+        - id: ChemistryBottleTramadol # Offbrand
 
 - type: entity
   id: MedkitCombatFilled
   suffix: Filled
   parent: MedkitCombat
   components:
-  - type: StorageFill
-    contents:
-      - id: MedicatedSuture
-      - id: RegenerativeMesh
-      - id: SyringeEphedrine
-      - id: SyringeOxycodone # Offbrand
-      - id: BruteAutoInjector
-      - id: BurnAutoInjector
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: MedicatedSuture
+        - id: RegenerativeMesh
+        - id: SyringeEphedrine
+        - id: SyringeOxycodone # Offbrand
+        - id: BruteAutoInjector
+        - id: BurnAutoInjector
 
 - type: entity
   id: StimkitFilled

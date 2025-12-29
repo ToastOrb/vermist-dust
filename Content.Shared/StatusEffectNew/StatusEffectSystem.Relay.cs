@@ -37,6 +37,12 @@ public sealed partial class StatusEffectsSystem
 
         SubscribeLocalEvent<StatusEffectContainerComponent, AccentGetEvent>(RelayStatusEffectEvent);
 
+        SubscribeLocalEvent<StatusEffectContainerComponent, BleedModifierEvent>(RefRelayStatusEffectEvent);
+
+        SubscribeLocalEvent<StatusEffectContainerComponent, DamageModifyEvent>(RelayStatusEffectEvent); // imp
+        SubscribeLocalEvent<StatusEffectContainerComponent, InteractionSuccessEvent>(RefRelayStatusEffectEvent); // imp
+        SubscribeLocalEvent<StatusEffectContainerComponent, IsWeightlessEvent>(RefRelayStatusEffectEvent); // imp
+
         SubscribeLocalEvent<StatusEffectContainerComponent, Content.Shared._Offbrand.Wounds.WoundGetDamageEvent>(RefRelayStatusEffectEvent); // Offbrand
         SubscribeLocalEvent<StatusEffectContainerComponent, Content.Shared._Offbrand.Wounds.GetWoundsWithSpaceEvent>(RefRelayStatusEffectEvent); // Offbrand
         SubscribeLocalEvent<StatusEffectContainerComponent, Content.Shared._Offbrand.Wounds.GetPainEvent>(RefRelayStatusEffectEvent); // Offbrand
@@ -61,17 +67,10 @@ public sealed partial class StatusEffectsSystem
         SubscribeLocalEvent<StatusEffectContainerComponent, Content.Shared.Movement.Pulling.Events.PullStartedMessage>(RelayStatusEffectEvent); // Offbrand
         SubscribeLocalEvent<StatusEffectContainerComponent, Content.Shared.Movement.Pulling.Events.PullStoppedMessage>(RelayStatusEffectEvent); // Offbrand
         SubscribeLocalEvent<StatusEffectContainerComponent, Content.Shared.Weapons.Ranged.Events.SelfBeforeGunShotEvent>(RelayStatusEffectEvent); // Offbrand
-        SubscribeLocalEvent<StatusEffectContainerComponent, Content.Shared.Chemistry.Hypospray.Events.SelfBeforeHyposprayInjectsEvent>(RelayStatusEffectEvent); // Offbrand
+        SubscribeLocalEvent<StatusEffectContainerComponent, Content.Shared.Chemistry.Events.SelfBeforeInjectEvent>(RelayStatusEffectEvent); // Offbrand
         SubscribeLocalEvent<StatusEffectContainerComponent, Content.Shared.Damage.Systems.DamageChangedEvent>(RelayStatusEffectEvent); // Offbrand
         SubscribeLocalEvent<StatusEffectContainerComponent, Content.Shared.Examine.ExaminedEvent>(RelayStatusEffectEvent); // Offbrand
         SubscribeLocalEvent<StatusEffectContainerComponent, Content.Shared.Verbs.GetVerbsEvent<Content.Shared.Verbs.AlternativeVerb>>(RelayStatusEffectEvent); // Offbrand
-
-        SubscribeLocalEvent<StatusEffectContainerComponent, BleedModifierEvent>(RefRelayStatusEffectEvent);
-
-        SubscribeLocalEvent<StatusEffectContainerComponent, DamageModifyEvent>(RelayStatusEffectEvent); // imp
-        SubscribeLocalEvent<StatusEffectContainerComponent, InteractionSuccessEvent>(RefRelayStatusEffectEvent); // imp
-
-        SubscribeLocalEvent<StatusEffectContainerComponent, IsWeightlessEvent>(RefRelayStatusEffectEvent); // imp
     }
 
     private void RefRelayStatusEffectEvent<T>(EntityUid uid, StatusEffectContainerComponent component, ref T args) where T : struct

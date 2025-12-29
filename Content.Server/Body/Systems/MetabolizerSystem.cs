@@ -148,6 +148,7 @@ public sealed class MetabolizerSystem : SharedMetabolizerSystem
         var metabolized = new HashSet<ProtoId<ReagentPrototype>>(); // Offbrand
         bool isDead = _mobStateSystem.IsDead(solutionEntityUid.Value);
 
+        var metabolized = new HashSet<ProtoId<ReagentPrototype>>(); // Offbrand
         int reagents = 0;
         foreach (var (reagent, quantity) in list)
         {

@@ -232,7 +232,7 @@ public sealed partial class RevenantSystem
 
         if (!_mobThresholdSystem.TryGetThresholdForState(args.Args.Target.Value, MobState.Dead, out var damage))
             return;
-        _damage.TryChangeDamage(args.Args.Target.Value, component.HarvestDamage, true, origin: uid); // Offbrand - use a fixed amount
+        _damage.ChangeDamage(args.Args.Target.Value, component.HarvestDamage, true, origin: uid);
 
         args.Handled = true;
     }

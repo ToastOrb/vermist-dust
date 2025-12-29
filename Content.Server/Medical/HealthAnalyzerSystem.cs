@@ -20,6 +20,7 @@ using Robust.Shared.Containers;
 using Robust.Shared.Timing;
 using Content.Shared._Offbrand.Wounds; // Offbrand
 using Content.Server.Body.Systems;
+using Content.Shared._Offbrand.Wounds; // Offbrand
 
 namespace Content.Server.Medical;
 
@@ -34,12 +35,8 @@ public sealed class HealthAnalyzerSystem : EntitySystem
     [Dependency] private readonly UserInterfaceSystem _uiSystem = default!;
     [Dependency] private readonly TransformSystem _transformSystem = default!;
     [Dependency] private readonly SharedPopupSystem _popupSystem = default!;
-<<<<<<< HEAD
     [Dependency] private readonly SharedWoundableHealthAnalyzerSystem _woundableHealthAnalyzer = default!; // Offbrand
-||||||| f2a589fbb7
-=======
     [Dependency] private readonly BloodstreamSystem _bloodstreamSystem = default!;
->>>>>>> impstation/master
 
     public override void Initialize()
     {

@@ -15,7 +15,7 @@
       - id: BoneGel # Offbrand
       - id: BoneSetter # Offbrand
       - id: VascularRecoupler # Offbrand
-      - id: Suture # Offbrand
+      - id: MedicatedSuture # Offbrand
 
 - type: entity
   parent: ClothingBackpackDuffelSyndicateMedicalBundle

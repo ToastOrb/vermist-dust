@@ -71,11 +71,11 @@
       - id: Drill
       - id: Saw
       - id: Hemostat
+      - id: ClothingMaskSterile
       - id: BoneGel # Offbrand
       - id: BoneSetter # Offbrand
       - id: VascularRecoupler # Offbrand
       - id: Suture # Offbrand
-      - id: ClothingMaskSterile
 
 - type: entity
   parent: CrateMedical

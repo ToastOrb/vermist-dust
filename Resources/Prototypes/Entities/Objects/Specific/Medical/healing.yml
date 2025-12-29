@@ -485,6 +485,7 @@
     damage:
       types:
         Heat: -10
+  # End Offbrand
   # imp edit start
     tendingBeginSound:
       path: "/Audio/Items/Toys/ToyFall2.ogg"

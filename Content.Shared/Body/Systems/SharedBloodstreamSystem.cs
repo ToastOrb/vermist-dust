@@ -86,9 +86,14 @@ public abstract class SharedBloodstreamSystem : EntitySystem
                 if (bloodPercentage < bloodstream.BloodlossThreshold)
                 {
                     // bloodloss damage is based on the base value, and modified by how low your blood level is.
-                    var amt = bloodstream.BloodlossDamage / (0.1f + bloodPercentage);
+                    // Offbrand - optional bloodloss
+                    if (bloodstream.BloodlossDamage is { } damage)
+                    {
+                        var amt = bloodstream.BloodlossDamage / (0.1f + bloodPercentage);
 
-                    _damageableSystem.TryChangeDamage(uid, amt, ignoreResistances: false, interruptsDoAfters: false);
+                        _damageableSystem.TryChangeDamage(uid, amt, ignoreResistances: false, interruptsDoAfters: false);
+                    }
+                    // End Offbrand - optional bloodloss
 
                     // Apply dizziness as a symptom of bloodloss.
                     // The effect is applied in a way that it will never be cleared without being healthy.
@@ -98,7 +103,12 @@ public abstract class SharedBloodstreamSystem : EntitySystem
                 else
                 {
                     // If they're healthy, we'll try and heal some bloodloss instead.
-                    _damageableSystem.TryChangeDamage(uid, bloodstream.BloodlossHealDamage * bloodPercentage, ignoreResistances: true, interruptsDoAfters: false);
+                    // Offbrand - optional bloodloss
+                    if (bloodstream.BloodlossHealDamage is { } damage)
+                    {
+                        _damageableSystem.TryChangeDamage(uid, damage * bloodPercentage, ignoreResistances: true, interruptsDoAfters: false);
+                    }
+                    // End Offbrand - optional bloodloss
 
                     _status.TryRemoveStatusEffect(uid, Bloodloss);
                 }
@@ -480,12 +490,14 @@ public abstract class SharedBloodstreamSystem : EntitySystem
 
     public void TickBleed(Entity<BloodstreamComponent> entity)
     {
+        var bleedLevel = EffectiveBleedLevel(entity); // Offbrand
+
         // Removes blood from the bloodstream based on bleed amount (bleed rate)
         // as well as stop their bleeding to a certain extent.
-        if (entity.Comp.BleedAmount <= 0)
+        if (bleedLevel <= 0) // Offbrand
             return;
 
-        var ev = new BleedModifierEvent(entity.Comp.BleedAmount, entity.Comp.BleedReductionAmount);
+        var ev = new BleedModifierEvent(bleedLevel, entity.Comp.BleedReductionAmount); // Offbrand
         RaiseLocalEvent(entity, ref ev);
 
         // Blood is removed from the bloodstream at a 1-1 rate with the bleed amount
