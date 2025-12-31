@@ -220,7 +220,7 @@
           type: [ Dwarf ]
           inverted: true
       - !type:Drunk
-        boozePower: 20
+        boozePower: 2
       # Begin Offbrand
       - !type:ModifyStatusEffect
         effectProto: StatusEffectPainkillersMildEthanol
