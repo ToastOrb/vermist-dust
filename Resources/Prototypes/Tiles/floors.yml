@@ -229,7 +229,7 @@
   deconstructTools: [ Prying ]
   footstepSounds:
     collection: FootstepFloor
-  itemDrop: FloorTileItemSteel
+  itemDrop: FloorTileItemPlastic # Imp Edit, no plastic floor item upstream
   heatCapacity: 10000
 
 - type: tile
@@ -639,7 +639,8 @@
 - type: tile
   id: FloorMono
   name: tiles-mono-floor
-  sprite: /Textures/_Impstation/Tiles/Steel/mono.png # Imp Edit
+  sprite: /Textures/_Impstation/Tiles/Steel/steel_mono.png # Imp Edit
+  variants: 4
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -664,7 +665,7 @@
   id: FloorSteelDirty
   name: tiles-dirty-steel-floor
   sprite: /Textures/_Impstation/Tiles/Steel/steel_dirty.png # Imp Edit
-  variants: 4 # Imp Edit, why was it just 1 variant before when the sprite had 4 and placement variants had 4
+  variants: 4
   placementVariants:
   - 1.0
   - 1.0
@@ -1920,7 +1921,7 @@
 - type: tile
   id: FloorHull
   name: tiles-hull
-  sprite: /Textures/Tiles/hull.png
+  sprite: /Textures/_Impstation/Tiles/Misc/hull.png # Imp
   baseTurf: Plating
   isSubfloor: false
   footstepSounds:
@@ -1931,7 +1932,7 @@
 - type: tile
   id: FloorHullReinforced
   name: tiles-hull-reinforced
-  sprite: /Textures/Tiles/hull_reinforced.png
+  sprite: /Textures/_Impstation/Tiles/Misc/hull_reinforced.png # Imp
   baseTurf: Plating
   isSubfloor: false
   footstepSounds:

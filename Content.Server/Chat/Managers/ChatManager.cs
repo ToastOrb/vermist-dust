@@ -294,14 +294,14 @@ internal sealed partial class ChatManager : IChatManager
                 ("message", FormattedMessage.EscapeText(message)),
                 ("oocColor", oocColor));
 
-        if (_netConfigManager.GetClientCVar(player.Channel, CCVars.ShowOocPatronColor) && player.Channel.UserData.PatronTier is { } patron && PatronOocColors.TryGetValue(patron, out var patronColor))
-        {
-            // Patron OOC Message
-            wrappedMessage = Loc.GetString("chat-manager-send-ooc-patron-wrap-message",
-                ("patronColor", patronColor),
-                ("playerName", player.Name),
-                ("message", FormattedMessage.EscapeText(message)));
-        }
+        // if (_netConfigManager.GetClientCVar(player.Channel, CCVars.ShowOocPatronColor) && player.Channel.UserData.PatronTier is { } patron && PatronOocColors.TryGetValue(patron, out var patronColor))
+        // {
+        //     // Patron OOC Message
+        //     wrappedMessage = Loc.GetString("chat-manager-send-ooc-patron-wrap-message",
+        //         ("patronColor", patronColor),
+        //         ("playerName", player.Name),
+        //         ("message", FormattedMessage.EscapeText(message)));
+        // }
         if (_adminManager.HasAdminFlag(player, AdminFlags.NameColor) && _preferencesManager.TryGetCachedPreferences(player.UserId, out var adminPrefs))
         {
             // Get admin preferences and colors
