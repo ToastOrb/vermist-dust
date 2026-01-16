@@ -43,7 +43,7 @@ namespace Content.IntegrationTests.Tests
 
         private static readonly string[] Grids =
         {
-            "/Maps/_VDS/vds_centcomm.yml", // imp edit
+            "/Maps/_VDS/vds_centcomm.yml", // vds edit
             AdminTestArenaSystem.ArenaMapPath
         };
 

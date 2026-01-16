@@ -1,7 +1,7 @@
 - type: gameMap
-  id: RefsdalImp
-  mapName: 'RefsdalImp'
-  mapPath: /Maps/_Impstation/refsdal.yml
+  id: Refsdal
+  mapName: 'Refsdal'
+  mapPath: /Maps/_VDS/refsdal.yml
   minPlayers: 0
   maxPlayers: 22
   stations:
@@ -14,9 +14,9 @@
             !type:NanotrasenNameGenerator
             prefixCreator: '-DF'
         - type: StationEmergencyShuttle
-          emergencyShuttlePath: /Maps/_Impstation/Shuttles/emergency_refsdal.yml
+          emergencyShuttlePath: /Maps/_VDS/Shuttles/emergency_refsdal.yml
         - type: StationCargoShuttle
-          path: /Maps/_Impstation/Shuttles/cargo_refsdal.yml
+          path: /Maps/_VDS/Shuttles/cargo_refsdal.yml
         - type: StationJobs
           availableJobs: #TODO ENUMERATE THIS ONCE IN ROTATION
             # command

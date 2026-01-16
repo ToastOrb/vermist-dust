@@ -71,9 +71,12 @@ public sealed class StationPowerTests
         "TrainImp",
         "Xeno",
 
+        // VDS
+        "Refsdal",
+        "Progenitor",
+
         // NOT IN ROTATION BUT WE STILL NEED THEM TESTED SINCE THEY STILL HAVE A PROTOTYPE:
         "Eclipse",
-        "Refsdal",
         "Skimmer",
         "Union",
     ];
