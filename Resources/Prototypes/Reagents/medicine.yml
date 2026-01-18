@@ -782,10 +782,29 @@
   metabolisms:
     Drink:
       effects:
-      - !type:SatiateThirst
-        factor: 6
-      - !type:ModifyBloodLevel
-        amount: 0.25 # Offbrand
+        - !type:SatiateThirst
+          factor: 6
+        - !type:ModifyBloodLevel
+          amount: 0.25 # Offbrand
+    # imp edit start
+    Poison:
+      effects:
+      - !type:HealthChange
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ Snail ]
+        damage:
+          types:
+            Poison: 4
+      - !type:PopupMessage
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ Anomalocarid ]
+        type: Local
+        visualType: Medium
+        messages: [ "saline-anomalocarid-effect-home" ]
+        probability: 0.1
+    # imp edit end
 
 - type: reagent
   id: Siderlac

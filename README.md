@@ -33,9 +33,6 @@ Website: TODO
 ## Documentation/Wiki
 
 SS14's [docs site](https://docs.spacestation14.com/) has documentation on SS14's content, engine, game design, and more.
-Additionally, see these resources for license and attribution information:
-- [Robust Generic Attribution](https://docs.spacestation14.com/en/specifications/robust-generic-attribution.html)
-- [Robust Station Image](https://docs.spacestation14.com/en/specifications/robust-station-image.html)
 
 ## Contributing
 

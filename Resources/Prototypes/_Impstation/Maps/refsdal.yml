@@ -1,6 +1,6 @@
 - type: gameMap
-  id: Refsdal
-  mapName: 'Refsdal'
+  id: RefsdalImp
+  mapName: 'RefsdalImp'
   mapPath: /Maps/_Impstation/refsdal.yml
   minPlayers: 0
   maxPlayers: 22
