@@ -14,9 +14,6 @@
       map: ["enum.MMIVisualLayers.Base"]
   - type: Input
     context: human
-  - type: MMIExtractor # Offbrand
-    whitelist:
-      components: [Woundable, BrainDamage]
   - type: MMI
     brainSlot:
       name: positronic-brain-slot-component-slot-name-brain

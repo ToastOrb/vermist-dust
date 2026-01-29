@@ -41,7 +41,6 @@ using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Content.Shared.NPC.Prototypes;
 using Content.Shared.Roles;
-using Content.Shared._Offbrand.Wounds; // Offbrand
 using Content.Shared.Temperature.Components;
 using Content.Shared._Offbrand.Wounds; // Offbrand
 
@@ -296,11 +295,6 @@ public sealed partial class ZombieSystem
         _faction.ClearFactions(target, dirty: false);
         _faction.AddFaction(target, ZombieFaction);
         _faction.AddFaction(target, InitialInfectedFaction); //#IMP: zombies see intial infected as fellow zombies and don't attack
-
-        // Begin Offbrand
-        var rejuv = new Content.Shared.Rejuvenate.RejuvenateEvent();
-        RaiseLocalEvent(target, rejuv);
-        // End Offbrand
 
         // Begin Offbrand
         var rejuv = new Content.Shared.Rejuvenate.RejuvenateEvent();

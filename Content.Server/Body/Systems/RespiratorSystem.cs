@@ -65,7 +65,7 @@ public sealed class RespiratorSystem : EntitySystem
 
     private void OnMapInit(Entity<RespiratorComponent> ent, ref MapInitEvent args)
     {
-        ent.Comp.NextUpdate = _gameTiming.CurTime + ent.Comp.OverallAdjustedUpdateInterval;
+        ent.Comp.NextUpdate = _gameTiming.CurTime + ent.Comp.AdjustedUpdateInterval;
     }
 
     public override void Update(float frameTime)
@@ -78,7 +78,7 @@ public sealed class RespiratorSystem : EntitySystem
             if (_gameTiming.CurTime < respirator.NextUpdate)
                 continue;
 
-            respirator.NextUpdate += respirator.OverallAdjustedUpdateInterval; // Offbrand
+            respirator.NextUpdate += respirator.AdjustedUpdateInterval; // Offbrand
 
             if (_mobState.IsDead(uid))
                 continue;

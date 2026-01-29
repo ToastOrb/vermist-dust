@@ -145,7 +145,6 @@ public sealed class MetabolizerSystem : SharedMetabolizerSystem
         // like alphabetical order or insertion order mattering for processing
         _random.Shuffle(list);
 
-        var metabolized = new HashSet<ProtoId<ReagentPrototype>>(); // Offbrand
         bool isDead = _mobStateSystem.IsDead(solutionEntityUid.Value);
 
         var metabolized = new HashSet<ProtoId<ReagentPrototype>>(); // Offbrand

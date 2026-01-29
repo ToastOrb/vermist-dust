@@ -113,56 +113,9 @@ public abstract class SharedBloodstreamSystem : EntitySystem
                     _status.TryRemoveStatusEffect(uid, Bloodloss);
                 }
             }
-
-            // Begin Offbrand
-            var bleedLevel = EffectiveBleedLevel((uid, bloodstream));
-
-            // Removes blood from the bloodstream based on bleed amount (bleed rate)
-            // as well as stop their bleeding to a certain extent.
-            if (bleedLevel > 0)
-            {
-                var ev = new BleedModifierEvent(bleedLevel, bloodstream.BleedReductionAmount);
-                RaiseLocalEvent(uid, ref ev);
-
-                // Blood is removed from the bloodstream at a 1-1 rate with the bleed amount
-                TryModifyBloodLevel((uid, bloodstream), -ev.BleedAmount);
-
-                // Bleed rate is reduced by the bleed reduction amount in the bloodstream component.
-                TryModifyBleedAmount((uid, bloodstream), -ev.BleedReductionAmount);
-            }
-
-            if (bleedLevel == 0)
-                _alertsSystem.ClearAlert(uid, bloodstream.BleedingAlert);
             else
             {
-                var severity = (short)Math.Clamp(Math.Round(bleedLevel, MidpointRounding.ToZero), 0, 10);
-                _alertsSystem.ShowAlert(uid, bloodstream.BleedingAlert, severity);
-            }
-            // End Offbrand
-
-            // deal bloodloss damage if their blood level is below a threshold.
-            var bloodPercentage = GetBloodLevelPercentage((uid, bloodstream));
-            if (bloodPercentage < bloodstream.BloodlossThreshold && !_mobStateSystem.IsDead(uid) && bloodstream.BloodlossDamage is not null) // Offbrand
-            {
-                // bloodloss damage is based on the base value, and modified by how low your blood level is.
-                var amt = bloodstream.BloodlossDamage / (0.1f + bloodPercentage);
-
-                _damageableSystem.TryChangeDamage(uid, amt, ignoreResistances: false, interruptsDoAfters: false);
-
-                // Apply dizziness as a symptom of bloodloss.
-                // The effect is applied in a way that it will never be cleared without being healthy.
-                // Multiplying by 2 is arbitrary but works for this case, it just prevents the time from running out
-                _status.TrySetStatusEffectDuration(uid, Bloodloss);
-            }
-            else if (!_mobStateSystem.IsDead(uid) && bloodstream.BloodlossHealDamage is not null) // Offbrand
-            {
-                // If they're healthy, we'll try and heal some bloodloss instead.
-                _damageableSystem.TryChangeDamage(
-                    uid,
-                    bloodstream.BloodlossHealDamage * bloodPercentage,
-                    ignoreResistances: true, interruptsDoAfters: false);
-
-                _status.TryRemoveStatusEffect(uid, Bloodloss);
+                TickBleed((uid, bloodstream));
             }
         }
     }
@@ -518,7 +471,6 @@ public abstract class SharedBloodstreamSystem : EntitySystem
         {
             return false;
         }
-
         // imp Multiplies the blood lost per stack by the value set
         amount = TryComp<HemorrhageComponent>(ent, out var trait) ?
             amount * trait.BleedIncreaseMultiplier :
