@@ -153,6 +153,14 @@ public sealed partial class BloodstreamComponent : Component
     public Solution BloodReferenceSolution = new([new("Blood", 300)]);
 
     /// <summary>
+    /// VDS (offmed patch) How many units of blood is considered to be a healthy amount in the bloodstream.
+    /// Typically should equal the amount defined in <see cref="BloodReferenceSolution"/>.
+    /// Used by <seealso cref="_Offbrand.Wounds.HeartSystem"/>.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public float HealthyBloodVolume = 300f;
+
+    /// <summary>
     /// Caches the blood data of an entity.
     /// This is modified by DNA on init so it's not savable.
     /// </summary>
