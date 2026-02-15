@@ -8,3 +8,15 @@
     state: medical
   - type: MachineBoard
     prototype: OperatingTable
+
+#VDS - added vitals monitor machine board
+- type: entity 
+  parent: BaseMachineCircuitboard
+  id: VitalMonitorCircuitboard
+  name: vitals monitor machine board
+  description: A machine printed circuit board for a vital monitor.
+  components:
+  - type: Sprite
+    state: medical
+  - type: MachineBoard
+    prototype: VitalsMonitor
